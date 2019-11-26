@@ -15,3 +15,36 @@
     content: '\e015';
   }
 }
+
+@mixin icon ($icon, $color, $size) {
+  @extend .icon;
+
+  @if ($size=='small') {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  color: $color;
+
+  &::before {
+    content: $icon;
+  }
+}
+
+@each $name,
+$icon in $icons {
+  .icon-small-#{$name} {
+    @include icon($icon, black, 'small')
+  }
+}
+
+@each $name,
+$icon in $icons {
+  @each $color in $colors {
+    .icon-#{$name}-#{$color} {
+      @include icon($icon, $color, 'large');
+    }
+  }
+}

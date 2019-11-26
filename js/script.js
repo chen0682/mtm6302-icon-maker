@@ -10,6 +10,25 @@ const $icon = document.getElementById('icon')
 const $icons = document.getElementById('icons')
 const $colors = document.getElementById('colors')
 
+const iconButtons = []
+
+for (const icon of icons) {
+  iconButtons.push(`
+  <div class="icon-small-${icon}" data-icon="${icon}"></div>`)
+}
+
+$icons.innerHTML = iconButtons.join('')
+
+const colorButtons = []
+for (const color of colors) {
+  colorButtons.push(`<div class="color-${color}" data-color="${color}"></div>`)
+}
+
+$colors.innerHTML = colorButtons.join('')
+
+function createIcon () {
+  $icon.className = `icon-${maker.icon}-${maker.color}`
+}
 // Event Listeners
 
 $icons.addEventListener('click', function (e) {
